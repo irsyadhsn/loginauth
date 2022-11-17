@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button> </ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Words</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large">My Words</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-button
+      type="button"
+      [routerLink]="['/kamus-tambah']"
+      routerLinkActive="router-link-active"
+      color="success"
+      expand="block"
+    >
+      Add a Word
+    </ion-button>
+  </ion-list>
+  <ion-list>
+    <ion-list-header> My Words List </ion-list-header>
+  </ion-list>
+  <ion-card lines="inset" *ngFor="let word of words">
+    <ion-item>
+      <ion-icon slot="start" name="language"></ion-icon>
+      <ion-label>{{ word.kata }}</ion-label>
+      <ion-button
+        color="primary"
+        slot="end"
+        [routerLink]="['/mywords-edit/', word.id]"
+        routerLinkActive="router-link-active"
+      >
+        Edit
+      </ion-button>
+      <ion-button
+        color="danger"
+        slot="end"
+        (click)="deleteWord(word.id)"
+        routerLinkActive="router-link-active"
+      >
+        Hapus
+      </ion-button>
+    </ion-item>
+  </ion-card>
+</ion-content>
